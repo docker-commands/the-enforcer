@@ -1,5 +1,5 @@
 FROM alpine
-COPY src/enforcer /enforcer
+COPY bin/enforcer /enforcer
 RUN chmod +x /enforcer
 
 EXPOSE 8813

@@ -13,8 +13,8 @@ build: Dockerfile go-build
 go-build:
 	@echo "linux x86_64"
 	@echo "GOPATH=$(gopath)"
-	@env GOPATH=$(gopath) GOOS=linux GOARCH=amd64
-	cd src; go build -o enforcer .
+	
+	cd src;GOPATH=$(gopath) GOOS=linux GOARCH=amd64 go build -o ../bin/enforcer .
 
 push:
 	#docker push ${ORGANIZATION}/${REPOSITORY}:${VERSION}
