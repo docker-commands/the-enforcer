@@ -1,5 +1,5 @@
-FROM busybox
-COPY the-enforcer.sh /the-enforcer
+FROM alpine
 RUN chmod +x /the-enforcer
 ENDPOINT ["/the-enforcer"]
 CMD [-h]
+
