@@ -1,12 +1,20 @@
 VERSION = 0.8.13
 ORGANIZATION=commands
 REPOSITORY=the-enforcer
-
+PORT=8813
+base_dir=`pwd`
+gopath="$(base_dir)/src:$(GOPATH)"
 
 all: build
   
-build: Dockerfile
+build: Dockerfile go-build
 	docker build -t ${ORGANIZATION}/${REPOSITORY}:${VERSION} .
+
+go-build:
+	@echo "linux x86_64"
+	@echo "GOPATH=$(gopath)"
+	@env GOPATH=$(gopath) GOOS=linux GOARCH=amd64
+	cd src; go build -o enforcer .
 
 push:
 	#docker push ${ORGANIZATION}/${REPOSITORY}:${VERSION}

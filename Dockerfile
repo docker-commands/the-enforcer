@@ -1,5 +1,9 @@
 FROM alpine
-RUN chmod +x /the-enforcer
-ENDPOINT ["/the-enforcer"]
-CMD [-h]
+COPY src/enforcer /enforcer
+RUN chmod +x /enforcer
+
+EXPOSE 8813
+
+#ENTRYPOINT ["/enforcer"]
+#CMD [-h]
 
